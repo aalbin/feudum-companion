@@ -1,0 +1,79 @@
+.pawn-wrapper {
+    display: inline-block;
+    width: calc(33.33% - 8%);
+    height: 0;
+    padding-bottom: calc(33.33% - 8%);
+    margin: 4%;
+    cursor: pointer;
+}
+
+.pawn-select-wrapper {
+    display: inline-block;
+    width: calc(16.66% - 2%);
+    height: 0;
+    padding-bottom: calc(16.66% - 2%);
+    margin: 1%;
+    cursor: pointer;
+}
+
+.pawn-content {
+    background-size: 100%;
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.pawn-inactive {
+    background-color: #f0f0f0 !important;
+    background-image: url(./assets/plus.png);
+    background-size: 50% !important;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.pawn-farmer {
+    background-image: url(./assets/icon-farmer.png);
+}
+
+.pawn-merchant {
+    background-image: url(./assets/icon-merchant.png);
+}
+
+.pawn-alchemist {
+    background-image: url(./assets/icon-alchemist.png);
+}
+
+.pawn-knight {
+    background-image: url(./assets/icon-knight.png);
+}
+
+.pawn-noble {
+    background-image: url(./assets/icon-noble.png);
+}
+
+.pawn-monk {
+    background-image: url(./assets/icon-monk.png);
+}
+
+.pawn-color-red {
+    background-color: darkred;  /* crimson */
+}
+
+.pawn-color-blue {
+    background-color: darkblue; /* cornflowerblue */
+}
+
+.pawn-color-yellow {
+    background-color: gold;
+}
+
+.pawn-color-pink {
+    background-color: violet;
+}
+
+.pawn-color-green {
+    background-color: darkolivegreen;
+}
+
+.pawn-color-grey {
+    background-color: grey;
+}

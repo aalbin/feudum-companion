@@ -1,0 +1,63 @@
+.landscape-wrapper {
+    border-radius: 10%;
+    display: inline-block;
+    width: calc(33.33% - 8%);
+    height: 0;
+    padding-bottom: calc(33.33% - 8%);
+    margin: 4%;
+    font-size: 0.75em;
+    color: white;
+}
+
+.landscape-add {
+    background-color: #f0f0f0 !important;
+    background-image: url(./assets/plus.png);
+    background-size: 50% !important;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.landscape-content {
+    border-radius: 10%;
+    background-size: 100%;
+    width: 100%;
+    padding-bottom: 100%;
+    float:left;
+    background-repeat: no-repeat;
+    background-image: url(./assets/landscape.png);
+}
+
+.landscape-content::after {
+    display: inline-block;
+    content: "";
+    width: 4em;
+    height: 4em;
+    background-size: contain;
+    position: relative;
+    margin-left: calc(2em - 50%);
+    margin-top: 75%;
+}
+
+.landscape-smallIslands::after {
+    background-image: url(./assets/smallIslands.png);
+}
+
+.landscape-bigIslands::after {
+    background-image: url(./assets/bigIslands.png);
+}
+
+.landscape-forest::after {
+    background-image: url(./assets/forest.png);
+}
+
+.landscape-desert::after {
+    background-image: url(./assets/desert.png);
+}
+
+.landscape-badlands::after {
+    background-image: url(./assets/badlands.png);
+}
+
+.landscape-mountains::after {
+    background-image: url(./assets/mountains.png);
+}

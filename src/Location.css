@@ -1,0 +1,169 @@
+.location-wrapper {
+    border-radius: 50%;
+    display: inline-block;
+    width: calc(33.33% - 8%);
+    height: 0;
+    padding-bottom: calc(33.33% - 8%);
+    margin: 4%;
+    cursor: pointer;
+}
+
+.location-select-wrapper {
+    border-radius: 50%;
+    display: inline-block;
+    width: calc(16.66% - 2%);
+    height: 0;
+    padding-bottom: calc(16.66% - 2%);
+    margin: 1%;
+    cursor: pointer;
+}
+
+.location-content {
+    background-size: 100%;
+    width: 100%;
+    padding-bottom: 100%;
+    float:left;
+    background-repeat: no-repeat;
+}
+
+.location-wrapper::before {
+    display: inline-block;
+    content: "";
+    width: 4em;
+    height: 4em;
+    background-size: contain;
+    position: absolute;
+    margin-left: -2%;
+    margin-top: 6%;
+}
+
+.location-add {
+    background-color: #f0f0f0 !important;
+    background-image: url(./assets/plus.png);
+    background-size: 50% !important;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.location-add-selecting {
+    display: none !important;
+}
+
+.location-select {
+    position: absolute;
+    width: 40%;
+    top: 0;
+    margin: auto;
+    display: none;
+    background-color: #f4f4f4;
+    border: 1px dashed darkgrey;
+    padding: 1em;
+}
+
+.location-select-selecting {
+    display: block !important;
+}
+
+.location-select-item {
+    background-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    width: calc(11.11% - 0.5em);
+    height: 0;
+    padding-bottom: calc(11.11% - 0.5em);
+    margin: 0.25em;
+    border: none;
+    cursor: pointer; /* Mouse pointer on hover */
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.location-select-item-selected {
+    border: 0.25em solid red !important;
+    margin: 0 !important;
+}
+
+.location-outpost {
+    background-image: url(./assets/outpost.png);
+}
+
+.location-farm {
+    background-image: url(./assets/farm.png);
+}
+
+.location-town {
+    background-image: url(./assets/town.png);
+}
+
+.location-feudum-farmer {
+    background-image: url(./assets/feudum-farmer.png);
+}
+
+.location-feudum-merchant {
+    background-image: url(./assets/feudum-merchant.png);
+}
+
+.location-feudum-alchemist {
+    background-image: url(./assets/feudum-alchemist.png);
+}
+
+.location-feudum-knight {
+    background-image: url(./assets/feudum-knight.png);
+}
+
+.location-feudum-noble {
+    background-image: url(./assets/feudum-noble.png);
+}
+
+.location-feudum-monk {
+    background-image: url(./assets/feudum-monk.png);
+}
+
+.location-smallIslands::before {
+    background-image: url(./assets/smallIslands.png);
+}
+
+.location-bigIslands::before {
+    background-image: url(./assets/bigIslands.png);
+}
+
+.location-forest::before {
+    background-image: url(./assets/forest.png);
+}
+
+.location-desert::before {
+    background-image: url(./assets/desert.png);
+}
+
+.location-badlands::before {
+    background-image: url(./assets/badlands.png);
+}
+
+.location-mountains::before {
+    background-image: url(./assets/mountains.png);
+}
+
+.region-select-smallIslands {
+    background-image: url(./assets/smallIslands.png);
+}
+
+.region-select-bigIslands {
+    background-image: url(./assets/bigIslands.png);
+}
+
+.region-select-forest {
+    background-image: url(./assets/forest.png);
+}
+
+.region-select-desert {
+    background-image: url(./assets/desert.png);
+}
+
+.region-select-badlands {
+    background-image: url(./assets/badlands.png);
+}
+
+.region-select-mountains {
+    background-image: url(./assets/mountains.png);
+}

@@ -1,0 +1,125 @@
+.guild-wrapper {
+    width: calc(16.6667% - 32px);
+    display: inline-block;
+    padding: 16px;
+}
+
+.guild-icon {
+    width: 40%;
+    display: block;
+    margin: -15% auto 0;
+}
+
+.guild-icon-farmer {
+    content: url(./assets/icon-farmer.png);
+}
+
+.guild-icon-merchant {
+    content: url(./assets/icon-merchant.png);
+}
+
+.guild-icon-alchemist {
+    content: url(./assets/icon-alchemist.png);
+}
+
+.guild-icon-knight {
+    content: url(./assets/icon-knight.png);
+}
+
+.guild-icon-noble {
+    content: url(./assets/icon-noble.png);
+}
+
+.guild-icon-monk {
+    content: url(./assets/icon-monk.png);
+}
+
+.hexagon-wrapper {
+    width: calc(33.33% - 4%);
+    margin: 2%;
+    display: inline-block;
+}
+
+.hexagon-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 86.6%;
+}
+
+.hexagon {
+    position: absolute;
+    /* so .hexagon isn't pushed out of .container by the padding */
+    left: 25%;
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    /* center .hexagon inside .container*/
+    background-color: lightgrey;
+    /* color of the hexagon */
+}
+
+.hexagon-content { 
+    position: absolute;
+    top: 0;
+    font-size: 1.5em;
+    z-index: 100;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.hexagon:before,
+.hexagon:after {
+    display: block;
+    position: absolute;
+    /* otherwise :after is below the hexagon */
+    top: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    z-index: 1;
+}
+
+.hexagon:before {
+    -webkit-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+
+.hexagon:after {
+  -webkit-transform: rotate(120deg);
+  -moz-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  transform: rotate(120deg);
+}
+
+.guild-portrait {    
+    width: 80%;
+}
+
+.guild-portrait-farmer {
+    content: url(./assets/portrait-farmer.png);
+}
+
+.guild-portrait-merchant {
+    content: url(./assets/portrait-merchant.png);
+}
+
+.guild-portrait-alchemist {
+    content: url(./assets/portrait-alchemist.png);
+}
+
+.guild-portrait-knight {
+    content: url(./assets/portrait-knight.png);
+}
+
+.guild-portrait-noble {
+    content: url(./assets/portrait-noble.png);
+}
+
+.guild-portrait-monk {
+    content: url(./assets/portrait-monk.png);
+}

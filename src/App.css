@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  /* height: 150px; */
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.add-player {
+  display: inline-block;
+  width: calc(16.66% - 8%);
+  height: 0;
+  padding-bottom: calc(16.66% - 8%);
+  margin: 4%;
+  font-size: 0.75em;
+  cursor: pointer;
+  background-image: url(./assets/plus-white.png);
+  background-size: 50% !important;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+button {
+  border: none;
+  padding: 1em;
+  background-color: lightblue;
+  color: whitesmoke;
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
+.color-red {
+  background-color: darkred !important;
+}
+
+.color-blue {
+  background-color: darkblue !important;
+}
+
+.color-yellow {
+  background-color: gold !important;
+}
+
+.color-pink {
+  background-color: violet !important;
+}
+
+.color-green {
+  background-color: darkolivegreen !important;
+}
+
+.color-grey {
+  background-color: grey !important;
+}

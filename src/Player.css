@@ -1,0 +1,46 @@
+.player-wrapper {
+    width: calc(33.333% - 2%);
+    display: inline-block;
+    padding: 1%;
+}
+
+.player-content {
+    background-color: white;
+    padding: 2%;
+}
+
+.player-content h2 {
+    margin-top: 0;
+}
+
+.player-red{
+    background-color: darkred;
+}
+
+.player-blue {
+    background-color: darkblue;
+}
+
+.player-yellow{
+    background-color: gold;
+}
+
+.player-pink{
+    background-color: violet;
+}
+
+.player-green{
+    background-color: darkolivegreen;
+}
+
+.player-grey {
+    background-color: grey;
+}
+
+.location-container {
+    text-align: left;
+}
+
+.landscape-container {
+    text-align: left;
+}
