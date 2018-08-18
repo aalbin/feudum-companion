@@ -1,12 +1,18 @@
+.players {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .player-wrapper {
-    width: calc(33.333% - 2%);
+    width: calc(33.333% - 2em);
     display: inline-block;
-    padding: 1%;
 }
 
 .player-content {
     background-color: white;
     padding: 2%;
+    height: calc(100% - 6%);
 }
 
 .player-content h2 {
@@ -14,27 +20,27 @@
 }
 
 .player-red{
-    background-color: darkred;
+    border: 1em solid darkred;
 }
 
 .player-blue {
-    background-color: darkblue;
+    border: 1em solid darkblue;
 }
 
 .player-yellow{
-    background-color: gold;
+    border: 1em solid gold;
 }
 
 .player-pink{
-    background-color: violet;
+    border: 1em solid violet;
 }
 
 .player-green{
-    background-color: darkolivegreen;
+    border: 1em solid darkolivegreen;
 }
 
 .player-grey {
-    background-color: grey;
+    border: 1em solid grey;
 }
 
 .location-container {
