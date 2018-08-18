@@ -17,7 +17,7 @@ class LocationView extends Component{
 
     render(){
         return (
-            <div className={`location-wrapper location-${this.location.region}`} onClick={() => this.startSelect(this.renderImprove)}>
+            <div className={`location-wrapper location-instance-wrapper location-${this.location.region}`} onClick={() => this.startSelect(this.renderImprove)}>
                 <div className={`location-content ${this.getLocationClass(this.location.type, this.location.guild)}`} >
                 </div>
             </div>
