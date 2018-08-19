@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
+import logo from './assets/feudum-logo.jpg';
 import './App.css';
 import GuildView from './GuildView';
 import PlayerView from './PlayerView';
@@ -44,8 +44,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h1 className="App-title">Welcome to Feudum Companion</h1>
+          <img src={logo} className="feudum-logo" alt="logo" />
+          {/* <p class="feudum-logo-subtitle">COMPANION</p> */}
         </header>
         <div className="guilds">
           <GuildView guild={this.state.guilds[0]} />

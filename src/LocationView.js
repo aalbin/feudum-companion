@@ -35,7 +35,7 @@ class LocationView extends Component{
     renderImprove() {
         return (
             <div>
-                {this.renderUpgradeOptions()}
+                {this.renderUpgradeOptions()}<br/>
                 <button onClick={() => this.removeLocation(this.location.key)}>remove location</button>
             </div>
         )
