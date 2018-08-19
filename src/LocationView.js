@@ -13,11 +13,12 @@ class LocationView extends Component{
         this.removeLocation = props.removeLocation;
 
         this.renderImprove = this.renderImprove.bind(this);
+        this.dragLocation = this.dragLocation.bind(this);
     }
 
     render(){
         return (
-            <div className={`location-wrapper location-instance-wrapper location-${this.location.region}`} onClick={() => this.startSelect(this.renderImprove)}>
+            <div className={`location-wrapper location-instance-wrapper location-${this.location.region}`} onClick={() => this.startSelect(this.renderImprove)} draggable="true" onDragStart={this.dragLocation}>
                 <div className={`location-content ${this.getLocationClass(this.location.type, this.location.guild)}`} >
                 </div>
             </div>
@@ -41,22 +42,38 @@ class LocationView extends Component{
     }
 
     renderUpgradeOptions() {
-        if(this.location.type === locations.town)
-            return Object.keys(guilds).map((g, i) => <div key={i} className={`location-select-wrapper`} onClick={() => this.improveLocation(this.location.key, guilds[g])}>
-                <div className={`location-content ${this.getLocationClass(locations.feudum, guilds[g])}`}></div>
-            </div>);
-        else if(this.location.type === locations.outpost)
+        switch(this.location.type){
+            case locations.outpost: 
+                return (
+                    <div className={`location-select-wrapper`} onClick={() => this.improveLocation(this.location.key)}>
+                        <div className={`location-content ${this.getLocationClass(locations.farm)}`}></div>
+                    </div>
+                )
+                
+            case locations.farm:
+                return (
+                    <div className={`location-select-wrapper`} onClick={() => this.improveLocation(this.location.key)}>
+                        <div className={`location-content ${this.getLocationClass(locations.town)}`}></div>
+                    </div>
+                )
+
+            case locations.town:
+                return Object.keys(guilds).map((g, i) => <div key={i} className={`location-select-wrapper`} onClick={() => this.improveLocation(this.location.key, guilds[g])}>
+                    <div className={`location-content ${this.getLocationClass(locations.feudum, guilds[g])}`}></div>
+                </div>);
+
+            case locations.feudum:
             return (
                 <div className={`location-select-wrapper`} onClick={() => this.improveLocation(this.location.key)}>
-                    <div className={`location-content ${this.getLocationClass(locations.farm)}`}></div>
+                    <div className={`location-content ${this.getLocationClass(locations.outpost)}`}></div>
                 </div>
             )
-        else if(this.location.type === locations.farm)
-            return (
-                <div className={`location-select-wrapper`} onClick={() => this.improveLocation(this.location.key)}>
-                    <div className={`location-content ${this.getLocationClass(locations.town)}`}></div>
-                </div>
-            )
+        }
+    }
+
+    dragLocation(e) {
+        console.log(this, e);
+        e.dataTransfer.setData('key', this.location.key);
     }
 }
 

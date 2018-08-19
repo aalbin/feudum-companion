@@ -1,3 +1,7 @@
+.guilds {
+    display: flex;
+}
+
 .guild-wrapper {
     width: calc(16.6667% - 32px);
     display: inline-block;
@@ -6,7 +10,7 @@
 
 .guild-icon {
     width: 40%;
-    display: block;
+    display: inline-block;
     margin: -15% auto 0;
 }
 
@@ -32,6 +36,24 @@
 
 .guild-icon-monk {
     content: url(./assets/icon-monk.png);
+}
+
+.location-icon {
+    width: 15%;
+    display: inline-block;
+    margin: 0 -11% 0;
+}
+
+.location-icon-outpost {
+    content: url(./assets/outpost.png);
+}
+
+.location-icon-farm {
+    content: url(./assets/farm.png);
+}
+
+.location-icon-town {
+    content: url(./assets/town.png);
 }
 
 .hexagon-wrapper {
@@ -122,4 +144,25 @@
 
 .guild-portrait-monk {
     content: url(./assets/portrait-monk.png);
+}
+
+.guild-secondary-influence-tracker {
+    border-radius: 50%;
+    width: calc(25% - 4%);
+    margin: 2%;
+    height: 0;
+    padding-bottom: calc(25% - 4%);
+    position: relative;
+    display: inline-block;
+}
+
+.guild-secondary-influence-tracker-content { 
+    position: absolute;
+    top: 0;
+    font-size: 1em;
+    z-index: 100;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
 }

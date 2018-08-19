@@ -1,9 +1,10 @@
-import { colors } from './enums';
+import { colors, guilds, locations } from './enums';
 
 class Guild {
     constructor(g) {
         this.guild = g;
         this.influence = {};
+        this.secondaryInfluence = {};
         this.position = [null, null, null, null, null, null];
 
         this.influence[colors.red] = 0;
@@ -12,6 +13,13 @@ class Guild {
         this.influence[colors.pink] = 0;
         this.influence[colors.green] = 0;
         this.influence[colors.grey] = 0;
+
+        this.secondaryInfluence[colors.red] = 0;
+        this.secondaryInfluence[colors.blue] = 0;
+        this.secondaryInfluence[colors.yellow] = 0;
+        this.secondaryInfluence[colors.pink] = 0;
+        this.secondaryInfluence[colors.green] = 0;
+        this.secondaryInfluence[colors.grey] = 0;
     }
 
     // color should be a value from the colors enum
@@ -19,6 +27,7 @@ class Guild {
     // statusQuo is a special card action from the alter ego expansion that can be played with the migrate action, which allows a player to move past another player simply by tieing them 
     setInfluence(color, newInfluence, statusQuo) {
         // early exit if influence hasn't changed. depending on how this function will be used this may save some cpu cycles
+        this.secondaryInfluence[color] = newInfluence.secondary[this.guild];
         if (this.influence[color] === newInfluence[this.guild])
             return;
 
@@ -64,15 +73,21 @@ class Guild {
     }
 
     master() {
-        return this.getPosition(5);
+        const master = this.getPosition(5);
+        if(this.getInfluence(master) > 0)
+            return master;
     }
 
     journeyman() {
-        return this.getPosition(4);
+        const journeyman = this.getPosition(4);
+        if(this.getInfluence(journeyman) > 0)
+            return journeyman;
     }
 
     apprentice() {
-        return this.getPosition(3);
+        const apprentice = this.getPosition(3);
+        if(this.getInfluence(apprentice) > 0)
+            return apprentice;
     }
 
     getPosition(position) {
@@ -83,6 +98,34 @@ class Guild {
 
     getInfluence(color) {
         return this.influence[color];
+    }
+
+    getSecondaryInfluenceLocation() {
+        switch(this.guild){
+            case guilds.farmer:
+            case guilds.knight:
+                return locations.farm;
+
+            case guilds.merchant:
+            case guilds.noble:
+                return locations.town;
+
+            case guilds.alchemist:
+            case guilds.monk:
+                return locations.outpost;
+
+            default:
+                return null;
+        }
+    }
+
+    // returns ranked list of players with no actual infleunce but secondary influence
+    getSecondaryRankings() {
+        return Object.keys(this.secondaryInfluence)
+            .filter(c => this.secondaryInfluence[c] > 0 && this.influence[c] === 0)
+            .sort((a, b) => this.secondaryInfluence[a] < this.secondaryInfluence[b])
+            .map(color => ({ color, value: this.secondaryInfluence[color] }));
+        // const secondaryRankings = this.position.sort((a, b) => a.)
     }
 
     getPoints(color) {

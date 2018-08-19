@@ -14,6 +14,8 @@ class PlayerView extends Component{
         super(props);
 
         this.state = { player: props.player };
+        this.refreshGuilds = props.refreshGuilds;
+        this.moveLocation = props.moveLocation;
         this.startSelect = props.startSelect;
         this.endSelect = props.endSelect;
         this.addLocation = this.addLocation.bind(this);
@@ -22,12 +24,12 @@ class PlayerView extends Component{
         this.removePawn = this.removePawn.bind(this);
         this.improveLocation = this.improveLocation.bind(this);
         this.removeLocation = this.removeLocation.bind(this);
-        this.refreshGuilds = props.refreshGuilds;
+        this.dropLocation = this.dropLocation.bind(this);
     }
 
     render(){
         return (
-            <div className={`player-wrapper player-${this.state.player.color}`}>
+            <div className={`player-wrapper player-${this.state.player.color}`} onDrop={this.dropLocation} onDragOver={e => e.preventDefault()}>
                 <div className={`player-content`} >
                     {/* <h2>{this.state.player.color}</h2> */}
                     <div>
@@ -124,13 +126,15 @@ class PlayerView extends Component{
 
     removeLocation(key) {
         const player = this.state.player;
-        const loc = this.state.player.locs.filter(l => l.key === key)[0];
-        console.log(key, player.locs, loc);
-        player.removeLocation(loc);
-        console.log(player.locs);
+        player.removeLocation(key);
         this.refreshGuilds(player);
         this.setState({ player });
         this.endSelect();
+    }
+
+    dropLocation(e) {
+        var key = e.dataTransfer.getData('key');
+        this.moveLocation(key, this.state.player.color);
     }
 }
 

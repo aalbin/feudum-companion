@@ -13,28 +13,31 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { guilds: [
-      new Guild(guilds.farmer),
-      new Guild(guilds.merchant),
-      new Guild(guilds.alchemist),
-      new Guild(guilds.knight),
-      new Guild(guilds.noble),
-      new Guild(guilds.monk),
-    ], inactivePlayers: [
-      new Player(colors.red),
-      new Player(colors.blue),
-      new Player(colors.yellow),
-      new Player(colors.pink),
-      new Player(colors.green),
-      new Player(colors.grey),
-    ], players: [],
-      selectBox: { hidden: true, renderer: null } };
+    this.state = {
+      guilds: [
+        new Guild(guilds.farmer),
+        new Guild(guilds.merchant),
+        new Guild(guilds.alchemist),
+        new Guild(guilds.knight),
+        new Guild(guilds.noble),
+        new Guild(guilds.monk),
+      ], inactivePlayers: [
+        new Player(colors.red),
+        new Player(colors.blue),
+        new Player(colors.yellow),
+        new Player(colors.pink),
+        new Player(colors.green),
+        new Player(colors.grey),
+      ], players: [],
+      selectBox: { hidden: true, renderer: null }
+    };
 
     this.epoch = 1;
     this.refreshGuilds = this.refreshGuilds.bind(this);
     this.nextEraAndScore = this.nextEraAndScore.bind(this);
     this.startSelect = this.startSelect.bind(this);
     this.endSelect = this.endSelect.bind(this);
+    this.moveLocation = this.moveLocation.bind(this);
   }
 
   render() {
@@ -46,7 +49,7 @@ class App extends Component {
         </header>
         <div className="guilds">
           <GuildView guild={this.state.guilds[0]} />
-          <GuildView guild={this.state.guilds[1]}  />
+          <GuildView guild={this.state.guilds[1]} />
           <GuildView guild={this.state.guilds[2]} />
           <GuildView guild={this.state.guilds[3]} />
           <GuildView guild={this.state.guilds[4]} />
@@ -80,14 +83,14 @@ class App extends Component {
   refreshGuilds(player, statusQuo) {
     const guilds = this.state.guilds;
     let influence = player.getInfluence();
-    for(let g of guilds) {
+    for (let g of guilds) {
       g.setInfluence(player.color, influence, statusQuo);
     }
     this.setState({ guilds });
   }
 
   renderActivePlayers() {
-    const players = this.state.players.map((p, i) => <PlayerView key={i} player={p} refreshGuilds={this.refreshGuilds} startSelect={this.startSelect} endSelect={this.endSelect} />);
+    const players = this.state.players.map((p, i) => <PlayerView key={i} player={p} refreshGuilds={this.refreshGuilds} startSelect={this.startSelect} endSelect={this.endSelect} moveLocation={this.moveLocation} />);
     return players;
   }
 
@@ -104,7 +107,7 @@ class App extends Component {
     const i = inactivePlayers.indexOf(p);
     const player = inactivePlayers.splice(i, 1);
     players.push(player[0]);
-    
+
     this.setState({ players, inactivePlayers });
   }
 
@@ -120,6 +123,20 @@ class App extends Component {
     selectBox.render = null;
     selectBox.hidden = true;
     this.setState({ selectBox });
+  }
+
+  moveLocation(key, target) {
+    const players = this.state.players;
+    const sourcePlayer = players.filter(p => p.locs.filter(l => l.key === key).length === 1)[0];
+    const location = sourcePlayer.removeLocation(key);
+    const targetPlayer = players.filter(p => p.color === target)[0];
+    targetPlayer.addLocation(location);
+
+    this.refreshGuilds(sourcePlayer);
+    this.refreshGuilds(targetPlayer);
+    this.setState({ players });
+    console.log(`move location ${key} to player ${target}`);
+    console.log(location.length === 1 ? location[0] : null);
   }
 }
 

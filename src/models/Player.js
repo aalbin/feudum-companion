@@ -24,14 +24,14 @@ class Player {
         this.locs.push(loc);
     }
 
-    removeLocation(loc) {
-        const index = this.locs.indexOf(loc);
+    removeLocation(key) {
+        const loc = this.locs.filter(l => l.key === key);
+        const index = loc.length === 1 ? this.locs.indexOf(loc[0]) : -1;
         if (index === -1)
             throw new Error('player does not own location');
 
-            console.log('removing ', index);
         var l = this.locs.splice(index, 1);
-        console.log('removed ', l)
+        return l.length > 0 ? l[0] : null;
     }
 
     tendLandscape(ls) {

@@ -24,7 +24,9 @@ class Location {
                 this.guild = guild;
                 return;
             case locations.feudum:
-                console.error('cannot improve feudum');
+                console.log('"improving" feudum to outpost to simulate conquered feudum');
+                this.type = locations.outpost;
+                this.guild = null;
                 return;
             default:
                 console.error('unknown location type');
