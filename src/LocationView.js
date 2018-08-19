@@ -72,7 +72,6 @@ class LocationView extends Component{
     }
 
     dragLocation(e) {
-        console.log(this, e);
         e.dataTransfer.setData('key', this.location.key);
     }
 }

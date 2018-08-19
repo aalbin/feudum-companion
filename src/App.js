@@ -135,8 +135,6 @@ class App extends Component {
     this.refreshGuilds(sourcePlayer);
     this.refreshGuilds(targetPlayer);
     this.setState({ players });
-    console.log(`move location ${key} to player ${target}`);
-    console.log(location.length === 1 ? location[0] : null);
   }
 }
 
