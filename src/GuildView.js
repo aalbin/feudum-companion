@@ -23,9 +23,9 @@ class GuildView extends Component{
                 <img className={`location-icon location-icon-${this.guild.getSecondaryInfluenceLocation()}`} />
                 <br/>
 
-                {this.renderMember(this.guild.apprentice(), this.guild.getInfluence(this.guild.apprentice()))}
-                {this.renderMember(this.guild.journeyman(), this.guild.getInfluence(this.guild.journeyman()))}
-                {this.renderMember(this.guild.master(), this.guild.getInfluence(this.guild.master()))}
+                {this.renderMember('apprentice', this.guild.apprentice(), this.guild.getInfluence(this.guild.apprentice()))}
+                {this.renderMember('journeyman', this.guild.journeyman(), this.guild.getInfluence(this.guild.journeyman()))}
+                {this.renderMember('master', this.guild.master(), this.guild.getInfluence(this.guild.master()))}
 
                 {this.renderSecondaryInfluenceTrack()}
 
@@ -40,9 +40,9 @@ class GuildView extends Component{
         );
     }
 
-    renderMember(color, influence) {
+    renderMember(position, color, influence) {
         return (
-            <div className="hexagon-wrapper">
+            <div className={`hexagon-wrapper-${position}`}>
                 <div className="hexagon-container">
                     <div className={`hexagon color-${color}`}>
                         <div className="hexagon-content">

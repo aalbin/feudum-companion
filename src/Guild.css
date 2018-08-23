@@ -56,8 +56,20 @@
     content: url(./assets/town.png);
 }
 
-.hexagon-wrapper {
+.hexagon-wrapper-apprentice {
+    width: calc(30% - 4%);
+    margin: 2%;
+    display: inline-block;
+}
+
+.hexagon-wrapper-journeyman {
     width: calc(33.33% - 4%);
+    margin: 2%;
+    display: inline-block;
+}
+
+.hexagon-wrapper-master {
+    width: calc(36.66% - 4%);
     margin: 2%;
     display: inline-block;
 }
