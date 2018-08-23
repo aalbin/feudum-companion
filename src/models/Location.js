@@ -9,6 +9,11 @@ class Location {
         this.key = uuid();
     }
 
+    static fromPOCO(poco) {
+        const location = new Location(poco.type, poco.region, poco.guild);
+        return location;
+    }
+
     improve(guild) {
 
         // using epoch and region, return the points received for this upgrade and display it?

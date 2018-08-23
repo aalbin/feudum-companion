@@ -13,22 +13,23 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    const savedState = this.loadState() || {};
     this.state = {
-      guilds: [
+      guilds: savedState.guilds || [
         new Guild(guilds.farmer),
         new Guild(guilds.merchant),
         new Guild(guilds.alchemist),
         new Guild(guilds.knight),
         new Guild(guilds.noble),
         new Guild(guilds.monk),
-      ], inactivePlayers: [
+      ], inactivePlayers: savedState.inactivePlayers || [
         new Player(colors.red),
         new Player(colors.blue),
         new Player(colors.yellow),
         new Player(colors.pink),
         new Player(colors.green),
         new Player(colors.grey),
-      ], players: [],
+      ], players: savedState.players || [],
       selectBox: { hidden: true, renderer: null }
     };
 
@@ -38,6 +39,8 @@ class App extends Component {
     this.startSelect = this.startSelect.bind(this);
     this.endSelect = this.endSelect.bind(this);
     this.moveLocation = this.moveLocation.bind(this);
+    this.resetGame = this.resetGame.bind(this);
+    this.renderResetPrompt = this.renderResetPrompt.bind(this);
   }
 
   render() {
@@ -46,6 +49,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="feudum-logo" alt="logo" />
           {/* <p class="feudum-logo-subtitle">COMPANION</p> */}
+          <div class="reset-button" onClick={() => this.startSelect(this.renderResetPrompt)}></div>
         </header>
         <div className="guilds">
           <GuildView guild={this.state.guilds[0]} />
@@ -80,15 +84,6 @@ class App extends Component {
     return score;
   }
 
-  refreshGuilds(player, statusQuo) {
-    const guilds = this.state.guilds;
-    let influence = player.getInfluence();
-    for (let g of guilds) {
-      g.setInfluence(player.color, influence, statusQuo);
-    }
-    this.setState({ guilds });
-  }
-
   renderActivePlayers() {
     const players = this.state.players.map((p, i) => <PlayerView key={i} player={p} refreshGuilds={this.refreshGuilds} startSelect={this.startSelect} endSelect={this.endSelect} moveLocation={this.moveLocation} />);
     return players;
@@ -98,6 +93,23 @@ class App extends Component {
     const players = this.state.inactivePlayers
       .map((p, i) => <div key={i} className={`add-player pawn-color-${p.color}`} onClick={() => this.addPlayer(p)}></div>);
     return players;
+  }
+
+  renderResetPrompt() {
+    return <div>
+        <h3>reset game?</h3>
+        <button onClick={this.resetGame}>yes</button>
+        <button onClick={this.endSelect}>no</button>
+      </div>
+  }
+
+  refreshGuilds(player, statusQuo) {
+    const guilds = this.state.guilds;
+    let influence = player.getInfluence();
+    for (let g of guilds) {
+      g.setInfluence(player.color, influence, statusQuo);
+    }
+    this.setState({ guilds });
   }
 
   addPlayer(p) {
@@ -135,6 +147,41 @@ class App extends Component {
     this.refreshGuilds(sourcePlayer);
     this.refreshGuilds(targetPlayer);
     this.setState({ players });
+  }
+  
+  componentDidUpdate(prevProps, prevState){
+    console.log('updated', this.state)
+    let stateCopy = {...this.state};
+    delete stateCopy.selectBox;
+    localStorage.setItem('feudum-companion-state', JSON.stringify(stateCopy));
+  }
+
+  resetGame() {
+    const state = {};
+    state.guilds = this.state.guilds.map(g => g.reset());
+    state.inactivePlayers = [
+      new Player(colors.red),
+      new Player(colors.blue),
+      new Player(colors.yellow),
+      new Player(colors.pink),
+      new Player(colors.green),
+      new Player(colors.grey),
+    ];
+    state.players = [];
+    this.setState(state);
+    this.endSelect();
+  }
+
+  loadState() {
+    console.log('loading state');
+    const state = JSON.parse(localStorage.getItem('feudum-companion-state'));
+    if(state){
+      return {
+        guilds: state.guilds.map(g => Guild.fromPOCO(g)),
+        inactivePlayers: state.inactivePlayers.map(p => Player.fromPOCO(p)),
+        players: state.players.map(p => Player.fromPOCO(p)),
+      };
+    }
   }
 }
 

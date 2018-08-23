@@ -22,6 +22,24 @@ class Guild {
         this.secondaryInfluence[colors.grey] = 0;
     }
 
+    static fromPOCO(poco) {
+        const guild = new Guild(poco.guild);
+        guild.influence = poco.influence;
+        guild.secondaryInfluence = poco.secondaryInfluence;
+        guild.position = poco.position;
+        return guild;
+    }
+
+    reset() {
+        this.position = [null,null,null,null,null,null];
+        for(let color in this.influence)
+            this.influence[color] = 0;
+        for(let color in this.secondaryInfluence)
+            this.secondaryInfluence[color] = 0;
+        
+        return this;
+    }
+
     // color should be a value from the colors enum
     // newInfluence should be an instance of the influence class
     // statusQuo is a special card action from the alter ego expansion that can be played with the migrate action, which allows a player to move past another player simply by tieing them 

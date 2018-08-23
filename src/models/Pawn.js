@@ -4,6 +4,11 @@ class Pawn {
         this.color = color;
     }
 
+    static fromPOCO(poco) {
+        const pawn = new Pawn(poco.type, poco.color);
+        return pawn;
+    }
+
     migrate(type) {
         this.type = type;
     }

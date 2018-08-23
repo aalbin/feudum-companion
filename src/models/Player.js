@@ -16,6 +16,19 @@ class Player {
         this.landscapes = [];
         this.locs = [];
     }
+    
+    static fromPOCO(poco) {
+        const player = new Player(poco.color);
+        player[pawns.one] = Pawn.fromPOCO(poco[pawns.one]);
+        player[pawns.two] = Pawn.fromPOCO(poco[pawns.two]);
+        player[pawns.three] = Pawn.fromPOCO(poco[pawns.three]);
+        player.catapult1 = poco.catapult1;
+        player.catapult2 = poco.catapult2;
+        player.catapult3 = poco.catapult3;
+        player.landscapes = poco.landscapes.map(l => Landscape.fromPOCO(l));
+        player.locs = poco.locs.map(l => Location.fromPOCO(l));
+        return player;
+    }
 
     addLocation(loc) {
         if (!(loc instanceof Location))

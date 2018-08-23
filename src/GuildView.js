@@ -55,7 +55,7 @@ class GuildView extends Component{
     }
 
     renderSecondaryInfluenceTrack() {
-        return this.guild.getSecondaryRankings().map(r => <div className={`guild-secondary-influence-tracker color-${r.color}`}><div className="guild-secondary-influence-tracker-content">{r.value}</div></div>);
+        return this.guild.getSecondaryRankings().map((r, i) => <div key={i} className={`guild-secondary-influence-tracker color-${r.color}`}><div className="guild-secondary-influence-tracker-content">{r.value}</div></div>);
     }
 }
 

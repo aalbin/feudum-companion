@@ -64,6 +64,15 @@ button {
   color: whitesmoke;
   font-size: 1.2em;
   font-weight: 900;
+  margin: 0.25em;
+}
+
+.reset-button {
+  content: url(./assets/reset.png);
+  width: 2em;
+  position:absolute;
+  top: 1em;
+  right: 1em;
 }
 
 .color-red {
