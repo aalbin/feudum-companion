@@ -82,6 +82,13 @@
     background-repeat: no-repeat;
 }
 
+@media only screen and (max-width: 600px) {
+    .location-select-item {
+        width: calc(25% - 2%);
+        padding-bottom: calc(25% - 2%);
+    }
+}
+
 .location-select-item-selected {
     border: 0.25em solid red !important;
     margin: 0 !important;

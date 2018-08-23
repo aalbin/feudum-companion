@@ -16,6 +16,12 @@
   width: 30%;
 }
 
+@media only screen and (max-width: 600px) {
+  .feudum-logo {
+    width: 50%;
+  }
+}
+
 .feudum-logo-subtitle {
   padding: 0;
   margin: -1em 0 0;

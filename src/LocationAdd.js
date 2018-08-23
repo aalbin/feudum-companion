@@ -64,7 +64,7 @@ class LocationAdd extends Component{
             <button className={`location-select-item location-feudum-knight ${this.getActiveState(locations.feudum, guilds.knight)}`} onClick={() => this.selectLocation(locations.feudum, guilds.knight)}></button>
             <button className={`location-select-item location-feudum-noble ${this.getActiveState(locations.feudum, guilds.noble)}`} onClick={() => this.selectLocation(locations.feudum, guilds.noble)}></button>
             <button className={`location-select-item location-feudum-monk ${this.getActiveState(locations.feudum, guilds.monk)}`} onClick={() => this.selectLocation(locations.feudum, guilds.monk)}></button>
-
+            <br/>
             <button className={`location-select-item region-select-bigIslands ${this.getActiveState(regions.bigIslands)}`} onClick={() => this.selectRegion(regions.bigIslands)}></button>
             <button className={`location-select-item region-select-smallIslands ${this.getActiveState(regions.smallIslands)}`} onClick={() => this.selectRegion(regions.smallIslands)}></button>
             <button className={`location-select-item region-select-forest ${this.getActiveState(regions.forest)}`} onClick={() => this.selectRegion(regions.forest)}></button>
