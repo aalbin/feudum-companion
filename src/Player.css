@@ -9,6 +9,18 @@
     display: inline-block;
 }
 
+@media only screen and (max-width: 600px) {
+    .player-wrapper {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 601px) {
+    .player-wrapper {
+        width: calc(50% - 2em);
+    }
+}
+
 .player-content {
     background-color: white;
     padding: 2%;
