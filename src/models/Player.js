@@ -1,15 +1,20 @@
-import { pawns, locations } from './enums';
+import { pawns, locations, playerTypes, colors } from './enums';
 import Location from './Location';
 import Landscape from './Landscape';
 import Influence from './Influence';
 import Pawn from './Pawn';
 
 class Player {
-    constructor(color) {
+    constructor(color, playerType) {
+        this.playerType = playerType;
         this.color = color;
-        this[pawns.one] = new Pawn(null, color);
-        this[pawns.two] = new Pawn(null, color);
-        this[pawns.three] = new Pawn(null, color);
+        this[pawns.one] = new Pawn(null, playerType === playerTypes.ai ? colors.green : color);
+        this[pawns.two] = new Pawn(null, playerType === playerTypes.ai ? colors.green : color);
+        this[pawns.three] = new Pawn(null, playerType === playerTypes.ai ? colors.green : color);
+        if(playerType === playerTypes.ai) {
+            this[pawns.four] = new Pawn(null, color);
+            this[pawns.five] = new Pawn(null, color);
+        }
         this.catapult1 = -3;
         this.catapult2 = -4;
         this.catapult3 = -5;
@@ -18,10 +23,14 @@ class Player {
     }
     
     static fromPOCO(poco) {
-        const player = new Player(poco.color);
+        const player = new Player(poco.color, poco.playerType);
         player[pawns.one] = Pawn.fromPOCO(poco[pawns.one]);
         player[pawns.two] = Pawn.fromPOCO(poco[pawns.two]);
         player[pawns.three] = Pawn.fromPOCO(poco[pawns.three]);
+        if(poco.playerType === playerTypes.ai) {
+            player[pawns.four] = Pawn.fromPOCO(poco[pawns.four]);
+            player[pawns.five] = Pawn.fromPOCO(poco[pawns.five]);
+        }
         player.catapult1 = poco.catapult1;
         player.catapult2 = poco.catapult2;
         player.catapult3 = poco.catapult3;
@@ -73,6 +82,10 @@ class Player {
             yield this.pawn2;
         if (this[pawns.three].type)
             yield this.pawn3;
+        if (this[pawns.four].type)
+            yield this.pawn4;
+        if (this[pawns.five].type)
+            yield this.pawn5;
     }
 
     hasFeudum() {

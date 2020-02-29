@@ -4,7 +4,7 @@ import './App.css';
 import GuildView from './GuildView';
 import PlayerView from './PlayerView';
 import SelectBox from './SelectBox';
-import { guilds, colors } from './models/enums';
+import { guilds, colors, playerTypes } from './models/enums';
 import Score from './models/Score';
 import Guild from './models/Guild';
 import Player from './models/Player';
@@ -23,12 +23,13 @@ class App extends Component {
         new Guild(guilds.noble),
         new Guild(guilds.monk),
       ], inactivePlayers: savedState.inactivePlayers || [
-        new Player(colors.red),
-        new Player(colors.blue),
-        new Player(colors.yellow),
-        new Player(colors.pink),
-        new Player(colors.green),
-        new Player(colors.grey),
+        new Player(colors.red, playerTypes.human),
+        new Player(colors.blue, playerTypes.human),
+        new Player(colors.yellow, playerTypes.human),
+        new Player(colors.pink, playerTypes.human),
+        new Player(colors.green, playerTypes.human),
+        new Player(colors.grey, playerTypes.human),
+        new Player(colors.black, playerTypes.ai),
       ], players: savedState.players || [],
       selectBox: { hidden: true, renderer: null }
     };
@@ -160,12 +161,13 @@ class App extends Component {
     const state = {};
     state.guilds = this.state.guilds.map(g => g.reset());
     state.inactivePlayers = [
-      new Player(colors.red),
-      new Player(colors.blue),
-      new Player(colors.yellow),
-      new Player(colors.pink),
-      new Player(colors.green),
-      new Player(colors.grey),
+      new Player(colors.red, playerTypes.human),
+      new Player(colors.blue, playerTypes.human),
+      new Player(colors.yellow, playerTypes.human),
+      new Player(colors.pink, playerTypes.human),
+      new Player(colors.green, playerTypes.human),
+      new Player(colors.grey, playerTypes.human),
+      new Player(colors.black, playerTypes.ai),
     ];
     state.players = [];
     this.setState(state);

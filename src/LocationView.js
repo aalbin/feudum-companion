@@ -68,6 +68,8 @@ class LocationView extends Component{
                     <div className={`location-content ${this.getLocationClass(locations.outpost)}`}></div>
                 </div>
             )
+            default:
+                return <div></div>
         }
     }
 

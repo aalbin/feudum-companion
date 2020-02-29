@@ -25,7 +25,7 @@ class LocationAdd extends Component{
     }
 
     getActiveState(lr, g) {
-        if(this.state.region === lr || (this.state.location === lr && this.state.guild == g))
+        if(this.state.region === lr || (this.state.location === lr && this.state.guild === g))
             return 'location-select-item-selected';
         return '';
     }

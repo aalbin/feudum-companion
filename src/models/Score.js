@@ -1,3 +1,5 @@
+import { playerTypes } from './enums'
+
 class Score {
     constructor(player, guilds, epoch) {
         this.guilds = guilds
@@ -18,7 +20,7 @@ class Score {
     }
 
     getPenalty(epoch, player) {
-        if (!player.hasFeudum())
+        if (!player.hasFeudum() || player.playerType === playerTypes.ai)
             return 0;
 
         // catapults are either 0, if token has been placed on them, or the penalty associated with that catapult spot on the board if not (for example -3 on catapult1)

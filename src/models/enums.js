@@ -14,6 +14,7 @@ const colors = Object.freeze({
     pink: 'pink',
     green: 'green',
     grey: 'grey',
+    black: 'black',
 });
 
 const locations = Object.freeze({
@@ -36,6 +37,13 @@ const pawns = Object.freeze({
     one: 'pawn1',
     two: 'pawn2',
     three: 'pawn3',
+    four: 'pawn4',
+    five: 'pawn5',
 });
 
-export { regions, colors, locations, guilds, pawns }
+const playerTypes = Object.freeze({
+    human: 'human',
+    ai: 'ai',
+})
+
+export { regions, colors, locations, guilds, pawns, playerTypes }

@@ -1,6 +1,6 @@
 import './Player.css';
 import React, { Component } from 'react';
-import { guilds, locations, regions, pawns } from './models/enums';
+import { guilds, locations, regions, pawns, playerTypes } from './models/enums';
 import PawnView from './PawnView';
 import LocationView from './LocationView';
 import LocationAdd from './LocationAdd';
@@ -36,6 +36,10 @@ class PlayerView extends Component{
                         <PawnView pawn={this.state.player.pawn1} nPawn={pawns.one} migratePawn={this.migratePawn} removePawn={this.removePawn} startSelect={this.startSelect} endSelect={this.endSelect} />
                         <PawnView pawn={this.state.player.pawn2} nPawn={pawns.two} migratePawn={this.migratePawn} removePawn={this.removePawn} startSelect={this.startSelect} endSelect={this.endSelect} />
                         <PawnView pawn={this.state.player.pawn3} nPawn={pawns.three} migratePawn={this.migratePawn} removePawn={this.removePawn} startSelect={this.startSelect} endSelect={this.endSelect} />
+                        {this.state.player.playerType === playerTypes.ai ? (<div>
+                            <PawnView pawn={this.state.player.pawn4} nPawn={pawns.four} migratePawn={this.migratePawn} removePawn={this.removePawn} startSelect={this.startSelect} endSelect={this.endSelect} /> 
+                            <PawnView pawn={this.state.player.pawn5} nPawn={pawns.five} migratePawn={this.migratePawn} removePawn={this.removePawn} startSelect={this.startSelect} endSelect={this.endSelect} />
+                        </div>) : ''}
                     </div>
                     <div className="location-container">
                         {this.renderLocations()}
