@@ -82,9 +82,9 @@ class Player {
             yield this.pawn2;
         if (this[pawns.three].type)
             yield this.pawn3;
-        if (this[pawns.four].type)
+        if (this[pawns.four] && this[pawns.four].type)
             yield this.pawn4;
-        if (this[pawns.five].type)
+        if (this[pawns.five] && this[pawns.five].type)
             yield this.pawn5;
     }
 
